@@ -142,6 +142,7 @@ def load_posts() -> list[dict]:
             "summary": meta.get("summary", ""),
             "date": meta.get("date", ""),
             "date_display": format_date(meta.get("date", "")),
+            "order": meta.get("order", 0),
             "tags": meta.get("tags", []),
             "thumbnail": thumbnail,
             "slug": slug,
@@ -149,8 +150,8 @@ def load_posts() -> list[dict]:
         }
         posts.append(post)
 
-    # 日付降順でソート
-    posts.sort(key=lambda p: str(p["date"]), reverse=True)
+    # order（明示指定があれば優先）→ 日付降順でソート
+    posts.sort(key=lambda p: p.get("order", 0), reverse=True)
     return posts
 
 

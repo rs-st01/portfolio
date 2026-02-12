@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>このポートフォリオサイト自体をCursorで制作した話 | AI Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">AI Portfolio</a>
+            <p class="site-description">社内AI活用事例集</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="article">
+    <div class="article-header">
+        <p class="article-date">2026-02-13</p>
+        <h1 class="article-title">このポートフォリオサイト自体をCursorで制作した話</h1>
+        <p class="article-client">社内プロジェクト</p>
+        <p class="article-period">2026-02</p>
+        <p class="article-purpose">AI活用事例をまとめるポートフォリオサイトの設計・コーディング・記事作成までCursorで一括対応</p>
+        <div class="article-ai-tools">
+            
+            <span class="ai-tag">Cursor</span>
+            
+            <span class="ai-tag">GitHub Pages</span>
+            
+        </div>
+        
+        <div class="article-tags">
+            
+            <span class="tag">サイト制作</span>
+            
+            <span class="tag">ポートフォリオ</span>
+            
+            <span class="tag">社内ツール</span>
+            
+        </div>
+        
+    </div>
+    <div class="article-body">
+        <h2 id="_1">この事例のポイント</h2>
+<p>いま見ているこのポートフォリオサイト自体が、<strong>Cursor で制作した事例</strong> です。</p>
+<p>サイトの設計・HTML/CSSのコーディング・ビルドスクリプトの作成・GitHub Pages へのプッシュまで、すべて Cursor 上で完結しています。さらに、各記事の作成もCursorが担当しています。</p>
+<h2 id="cursor">Cursor が担当していること</h2>
+<h3 id="1">1. サイト全体の設計・コーディング</h3>
+<ul>
+<li>静的サイトジェネレーターの構成設計（Markdown → HTML のビルドパイプライン）</li>
+<li>HTML テンプレート・CSS のコーディング</li>
+<li>Python のビルドスクリプト（<code>build.py</code>）の作成</li>
+<li>レスポンシブ対応</li>
+</ul>
+<h3 id="2-github">2. GitHub へのプッシュ</h3>
+<ul>
+<li>git add → commit → push まで Cursor のターミナルから一括対応</li>
+<li>GitHub Pages でそのまま公開される構成</li>
+</ul>
+<h3 id="3">3. 記事の作成</h3>
+<p>各事例の記事も Cursor が作成しています。私がやっているのは以下だけです。</p>
+<ul>
+<li><strong>口語に近いテキストで内容を羅列する</strong>（「こういう案件で、こういうツール使って、こういう成果が出た」レベル）</li>
+<li><strong>スクリーンショットや動画ファイルを貼る</strong></li>
+</ul>
+<p>これだけ渡せば、Cursor が内容を整理し、読みやすい構成に整えて、Markdownの記事ファイルとして完成させてくれます。</p>
+<h2 id="_2">スピード感</h2>
+<h3 id="_3">サイト構築</h3>
+<p>仕様を決めるまでは少し時間がかかりましたが、仕様が固まってからは：</p>
+<ul>
+<li><strong>サイト全体の設計・コーディング・GitHub へのプッシュまで：10〜20分以内</strong></li>
+</ul>
+<p>テンプレート構成、CSS、ビルドスクリプト、初回デプロイまで含めてこの時間です。</p>
+<h3 id="_4">記事作成</h3>
+<ul>
+<li><strong>1記事あたり：長くても10分程度で完成</strong></li>
+</ul>
+<p>口語テキスト＋スクショを投げるだけで、見出し構成・説明文・画像の配置まで整えてくれるので、体感としては「しゃべったら記事ができてる」に近い感覚です。</p>
+<h2 id="cursor_1">なぜ Cursor を選んだのか</h2>
+<p>今回のようなポートフォリオサイトは <strong>完成形のイメージが明確</strong> なプロジェクトです。「こういうデザインで、こういう構成のサイトが欲しい」というゴールが最初から見えている。</p>
+<p>GPT に相談したところ、<strong>完成形が見えているクリエイティブ制作には Claude Code より Cursor のほうが向いている</strong> とのアドバイスがあり、今回は Cursor を採用しました。</p>
+<p>実際、Cursor はコードの生成だけでなく、ファイル操作・ターミナル操作・git 操作まで一貫してこなしてくれるので、IDE の中だけですべてが完結するのは大きな強みでした。</p>
+<h2 id="_5">成果</h2>
+<ul>
+<li>サイト構築（設計〜デプロイ）が <strong>20分以内</strong> で完了</li>
+<li>記事作成が <strong>1本10分以内</strong> で完了（口語テキスト＋スクショを渡すだけ）</li>
+<li>デザイン・コーディング・記事執筆・デプロイまで <strong>ワンストップで Cursor に任せられる</strong> ことを実証</li>
+<li>社内のAI活用事例を素早く共有できる基盤が整った</li>
+</ul>
+<h2 id="_6">再利用可能ポイント</h2>
+<ul>
+<li>Markdown + 静的サイトジェネレーターの構成はシンプルなので、他のドキュメントサイトにも転用可能</li>
+<li>「口語テキスト＋スクショ → Cursor が記事化」というワークフローは、ブログ・報告書・社内ナレッジなど幅広く応用できる</li>
+<li>GitHub Pages での公開は無料で、社内限定（noindex対応済み）のサイト運用に最適</li>
+</ul>
+<h2 id="cms">CMS不要で更新できる</h2>
+<p>一般的なWebサイトでは記事を更新するためにCMS（WordPressなど）を導入することが多いですが、このサイトではCMSは使っていません。</p>
+<p><strong>Cursor の Workspace でチャットするだけ</strong> で記事が次々と追加・更新されていきます。口語テキストとスクショを渡せばCursorが記事を整え、ビルドし、GitHubにプッシュするところまで一気通貫。CMS導入・管理のコストがゼロで、サイト更新が圧倒的に楽です。</p>
+<h2 id="_7">課題・改善点</h2>
+<ul>
+<li>仕様が曖昧な段階だと、Cursor とのやりとりに時間がかかる（完成イメージを先に固めるのが重要）</li>
+<li>デザインの細かなニュアンス（余白感・フォントの雰囲気など）は、言語化が難しく微調整が発生しがち</li>
+</ul>
+    </div>
+    <div class="article-back">
+        <a href="../index.html">&larr; 一覧に戻る</a>
+    </div>
+</article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 AI Portfolio &mdash; 社内限定</p>
+        </div>
+    </footer>
+</body>
+</html>

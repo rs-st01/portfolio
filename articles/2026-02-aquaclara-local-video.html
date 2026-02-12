@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>アクアクララ UGC風動画素材制作（ローカルAI動画生成） | AI Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">AI Portfolio</a>
+            <p class="site-description">社内AI活用事例集</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="article">
+    <div class="article-header">
+        <p class="article-date">2026-02-13</p>
+        <h1 class="article-title">アクアクララ UGC風動画素材制作（ローカルAI動画生成）</h1>
+        <p class="article-client">アクアクララ</p>
+        <p class="article-period">2026-02</p>
+        <p class="article-purpose">ローカル環境のAI動画生成ツール（ComfyUI + Wan2.2）でUGC風の短尺動画素材を制作</p>
+        <div class="article-ai-tools">
+            
+            <span class="ai-tag">nanobananaPro</span>
+            
+            <span class="ai-tag">ComfyUI</span>
+            
+            <span class="ai-tag">Wan2.2</span>
+            
+        </div>
+        
+        <div class="article-tags">
+            
+            <span class="tag">動画生成</span>
+            
+            <span class="tag">ローカルAI</span>
+            
+            <span class="tag">UGC</span>
+            
+        </div>
+        
+    </div>
+    <div class="article-body">
+        <h2 id="_1">この事例のポイント</h2>
+<p>アクアクララの動画素材として、<strong>UGC（ユーザー生成コンテンツ）風</strong> の短尺動画を制作しました。</p>
+<p>前回のドゥベスト案件ではクラウドベースのAI動画生成サービス（Adobe Firefly / Google AI Studio）を使いましたが、クレジット消費の問題がありました。今回は <strong>自宅PCを新調</strong> したことをきっかけに、<strong>ローカル環境でのAI動画生成</strong> に初挑戦した事例です。</p>
+<h2 id="_2">制作した動画</h2>
+<h3 id="_3">ウォーターボトル</h3>
+<video controls muted loop playsinline width="100%">
+  <source src="../video/6bottle.mp4" type="video/mp4">
+</video>
+
+<h3 id="_4">グラス</h3>
+<video controls muted loop playsinline width="100%">
+  <source src="../video/glass.mp4" type="video/mp4">
+</video>
+
+<p>いずれも、UGC風を意識した自然な雰囲気の映像に仕上げています。</p>
+<h2 id="_5">使用ツールの紹介</h2>
+<h3 id="comfyui">ComfyUI とは？</h3>
+<p><strong>ComfyUI</strong> は、AI画像・動画生成のための <strong>ノードベースのワークフローツール</strong> です。プログラミングの知識がなくても、画面上で「ノード」と呼ばれるブロックをつなげていくことで、生成の処理手順を視覚的に組み立てられます。</p>
+<p>ローカルPC上で動作するため、<strong>クラウドサービスのようなクレジット消費がなく</strong>、自分のマシンパワーの範囲内で何度でも生成を試せるのが最大のメリットです。</p>
+<h3 id="wan22">Wan2.2 とは？</h3>
+<p><strong>Wan2.2</strong>（正式名：Wan Video）は、<strong>静止画から動画を生成できるAIモデル</strong> です。開始フレームの画像を入力すると、そこから自然な動きのある動画を生成してくれます。</p>
+<p>ComfyUI上でこのWan2.2モデルを動かすことで、ローカル環境だけで動画生成が完結します。</p>
+<p><img alt="ComfyUIのワークフロー画面。ノードをつないで動画生成の処理を組み立てている" src="../images/aquaclara-comfyui-workflow.png" /></p>
+<p>今回使用したノード（ワークフロー）は配布されていたものをそのまま利用しています。</p>
+<h2 id="_6">制作ワークフロー</h2>
+<ol>
+<li><strong>nanobananaPro で開始フレームの静止画を作成</strong> — UGC風を意識した写真テイストの画像を生成</li>
+<li><strong>ComfyUI + Wan2.2 で動画生成</strong> — 静止画を入力し、2秒程度の動画を生成</li>
+<li><strong>素材として書き出し</strong> — 生成された動画をそのまま素材として使用</li>
+</ol>
+<h2 id="ai">ローカルAI動画生成のメリット・デメリット</h2>
+<h3 id="_7">メリット</h3>
+<ul>
+<li><strong>クレジット消費ゼロ</strong> — クラウドサービスと違い、何度でも無料で試作できる</li>
+<li><strong>データが外部に出ない</strong> — クライアント素材をクラウドに上げる必要がない</li>
+<li><strong>2秒程度なら破綻が少ない動画が作れる</strong> — UGC風動画で短いカットを数多く必要とするケースにちょうどいい</li>
+</ul>
+<h3 id="_8">デメリット</h3>
+<ul>
+<li><strong>マシンパワーに依存</strong> — グラフィックボード（GPU）の性能がそのまま生成速度・品質に直結する</li>
+<li><strong>動画画質があまり上げられない</strong> — 現状のスペックでは解像度やフレームレートに限界がある</li>
+<li><strong>大量生産は厳しい</strong> — 1本あたりの生成時間がかかるため、量をこなすには高性能GPUへの投資が必要</li>
+</ul>
+<h2 id="_9">成果</h2>
+<ul>
+<li>ローカル環境でのAI動画生成ワークフローを確立</li>
+<li>クレジットを気にせず試作を繰り返せる環境を整備</li>
+<li>UGC風の短尺カット素材として実案件に活用</li>
+</ul>
+<h2 id="_10">再利用可能ポイント</h2>
+<ul>
+<li>ComfyUI + Wan2.2 のワークフローは他案件にもそのまま転用可能</li>
+<li>nanobananaPro で静止画を作り、ComfyUI で動画化するという流れは汎用的</li>
+<li>短尺カットが大量に必要なSNS広告やLP素材の制作に向いている</li>
+</ul>
+<h2 id="_11">課題・改善点</h2>
+<ul>
+<li>現状のGPUスペックでは画質・速度に限界があり、大量生産には至らない</li>
+<li>ローカルAIはグラフィックボードにお金をかけないと本格運用が難しい</li>
+<li>長尺（5秒以上）になると動きの破綻が増えるため、用途が短尺カットに限られる</li>
+</ul>
+    </div>
+    <div class="article-back">
+        <a href="../index.html">&larr; 一覧に戻る</a>
+    </div>
+</article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 AI Portfolio &mdash; 社内限定</p>
+        </div>
+    </footer>
+</body>
+</html>

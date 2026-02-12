@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>アクアクララ バナー仕様YAMLプロンプト生成ツール | AI Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">AI Portfolio</a>
+            <p class="site-description">社内AI活用事例集</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="article">
+    <div class="article-header">
+        <p class="article-date">2026-02-13</p>
+        <h1 class="article-title">アクアクララ バナー仕様YAMLプロンプト生成ツール</h1>
+        <p class="article-client">アクアクララ</p>
+        <p class="article-period">2025-12 ~ 2026-01</p>
+        <p class="article-purpose">広告バナーのデザイン仕様をYAML形式で構造化し、nanbananaPro / Taskyでの画像生成精度を向上</p>
+        <div class="article-ai-tools">
+            
+            <span class="ai-tag">Gemini</span>
+            
+            <span class="ai-tag">Google Apps Script</span>
+            
+            <span class="ai-tag">nanobananaPro</span>
+            
+        </div>
+        
+        <div class="article-tags">
+            
+            <span class="tag">広告</span>
+            
+            <span class="tag">プロンプト設計</span>
+            
+            <span class="tag">ツール開発</span>
+            
+        </div>
+        
+    </div>
+    <div class="article-body">
+        <h2 id="_1">この事例のポイント</h2>
+<p>広告バナーを AI で生成する際、「テキストをもっと大きく」「この画像を目立たせて」といったデザイン意図をうまく伝えるのは意外と難しいです。自然言語のプロンプトだと、AIが意図を汲み取れずに何度もやり直し…ということが起きがちです。</p>
+<p>そこで、デザイン要素の <strong>優先度・役割・種類</strong> を <strong>YAML形式</strong> で構造化して渡すことで、AI（nanobananaPro / Taskyなど）がデザイン意図を正確に理解できるようにしました。そのYAMLを <strong>誰でもかんたんに作れるフォーム型ツール</strong> を Google Apps Script（GAS）で開発した事例です。</p>
+<h2 id="_2">何ができるツールなのか</h2>
+<p>ブラウザ上のフォームに必要な情報を入力するだけで、広告バナーの仕様が <strong>構造化されたYAML</strong> として出力されます。</p>
+<h3 id="_3">入力する内容</h3>
+<p>フォームの上部では、バナー全体の方向性を設定します。</p>
+<ul>
+<li><strong>案件タイトル</strong> — 例：アクアクララ_Instagram広告バナー_1月限定特典</li>
+<li><strong>コアコンセプト</strong></li>
+<li><strong>立ち位置（position）</strong> — 広告の基本的なスタンス</li>
+<li><strong>守ること（keep）</strong> — ブランドとして絶対に外せない要素</li>
+<li><strong>強調（emphasize）</strong> — 今回特に打ち出したいポイント</li>
+<li><strong>避けること（avoid）</strong> — やってはいけない表現やトーン</li>
+</ul>
+<p><img alt="フォーム上部。案件タイトルとコアコンセプト（立ち位置・守ること・強調・避けること）を入力する画面" src="../images/aquaclara-yaml-form-top.png" /></p>
+<h3 id="_4">表示要素の設定</h3>
+<p>次に、バナーに載せる個々の要素を1つずつ設定します。</p>
+<ul>
+<li><strong>タイプ</strong> — text（テキスト）/ image（画像）/ bundle（まとめ要素）</li>
+<li><strong>Role（役割）</strong> — primary_benefit / support / decoration などから選択</li>
+<li><strong>Importance（目立たせたいか）</strong> — primary / secondary / low から選択</li>
+<li><strong>画像アセット</strong> — 使用する画像素材をチェックボックスで選択</li>
+<li><strong>Note（補足）</strong> — 「48Lの数値は特に大きく・色を変えて目立たせたい」等の自由記述</li>
+</ul>
+<p>要素は「＋ 表示要素を追加」ボタンで好きなだけ追加でき、不要なものは削除ボタンで消せます。</p>
+<p><img alt="表示要素の設定画面。タイプ・Role・Importance・Noteなどを要素ごとに指定できる" src="../images/aquaclara-yaml-form-elements.png" /></p>
+<h3 id="yaml">YAML出力</h3>
+<p>「YAML生成」ボタンを押すと、入力内容が構造化されたYAMLとして出力されます。</p>
+<p><img alt="YAML出力結果。design_project、core_concept、design_strategy、assets_manifestなどが構造化されている" src="../images/aquaclara-yaml-output.png" /></p>
+<p>このYAMLをそのまま Gemini や Taskyに貼り付けるだけで、デザイン要素の優先度を意図した通りに反映した広告画像を生成できます。</p>
+<h2 id="_5">ツールの開発方法</h2>
+<p>このツール自体も AI を活用して作りました。</p>
+<ol>
+<li><strong>Gemini とチャットで仕様を相談</strong> — 「こういうフォームが欲しい」「YAMLのフォーマットはこうしたい」とやりとりしながら仕様を固めた</li>
+<li><strong>Gemini にスクリプトを出力してもらう</strong> — Google Apps Script のコードを Gemini に生成させた</li>
+<li><strong>GAS にそのまま実装</strong> — 出力されたコードを Google Apps Script に貼り付けてデプロイ</li>
+</ol>
+<p>つまり、<strong>ツールの企画→仕様決定→実装まで、ほぼ Gemini との対話だけで完結</strong> しています。</p>
+<h2 id="_6">実際の活用</h2>
+<ul>
+<li>生成したYAMLプロンプトは、nanobananaPro を使った Tasky の開発チームに提供</li>
+<li>Tasky 側でこのYAMLフォーマットをベースに広告画像生成の仕組みを構築</li>
+<li><strong>2026年1月配信のアクアクララ広告クリエイティブに実採用</strong></li>
+</ul>
+<h2 id="_7">成果</h2>
+<ul>
+<li>フォーム入力→YAML出力の流れにより、プロンプト作成の属人性を排除</li>
+<li>デザイン意図が構造化されるため、AIが優先度を正しく解釈できるようになった</li>
+<li>自然言語プロンプトで起きがちな「何度もやり直し」が大幅に減少</li>
+<li>実案件（2026年1月配信）で採用され、実運用に乗っている</li>
+</ul>
+<h2 id="_8">再利用可能ポイント</h2>
+<ul>
+<li><strong>YAML構造は汎用的</strong> — アクアクララ以外の案件でも、フォームの項目を変えるだけで転用可能</li>
+<li><strong>GAS＋HTMLで完結</strong> — 特別なサーバーやインフラ不要。Googleアカウントがあればすぐ使える</li>
+<li><strong>Gemini でツール開発</strong> という手法自体が再利用可能 — 同様の業務効率化ツールを短期間で量産できる</li>
+</ul>
+<h2 id="_9">課題・改善点</h2>
+<ul>
+<li>現状はアクアクララ案件に特化した項目設定になっているため、他案件用のテンプレート拡充が必要</li>
+<li>画像アセットの管理（登録・更新）がまだ手動</li>
+<li>YAMLフォーマットのバージョン管理をもう少し整備したい</li>
+</ul>
+    </div>
+    <div class="article-back">
+        <a href="../index.html">&larr; 一覧に戻る</a>
+    </div>
+</article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 AI Portfolio &mdash; 社内限定</p>
+        </div>
+    </footer>
+</body>
+</html>
