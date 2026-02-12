@@ -11,6 +11,9 @@ date: YYYY-MM-DD
 tags:
   - タグ1
   - タグ2
+thumbnail: ""
+# サムネイル画像: images/{slug}-thumb.png を置くか、ここにパスを指定
+# 例: thumbnail: "images/2026-02-sample-thumb.png"
 ---
 
 ## 自動化内容
@@ -27,6 +30,14 @@ tags:
 
 - 
 - 
+
+## スクリーンショット・図解
+
+必要に応じて画像を挿入します。画像は `images/` フォルダに保存してください。
+
+```markdown
+![説明テキスト](images/ファイル名.png)
+```
 
 ## 再利用可能ポイント
 

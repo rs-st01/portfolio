@@ -3,6 +3,7 @@
 AI Portfolio - Static Site Builder
 ===================================
 posts/ 内のMarkdown記事を読み込み、HTML（index.html + 個別記事ページ）を生成する。
+images/ 内の画像を出力先にコピーし、記事内の画像参照を正しいパスに変換する。
 
 使い方:
     python build.py
@@ -10,10 +11,12 @@ posts/ 内のMarkdown記事を読み込み、HTML（index.html + 個別記事ペ
 出力:
     - index.html         : カード一覧トップページ
     - articles/*.html    : 各記事の個別ページ
+    - images/*           : 画像ファイル（そのまま配信）
 """
 
 import os
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -29,7 +32,11 @@ BASE_DIR = Path(__file__).resolve().parent
 POSTS_DIR = BASE_DIR / "posts"
 TEMPLATES_DIR = BASE_DIR / "templates"
 ARTICLES_DIR = BASE_DIR / "articles"
+IMAGES_DIR = BASE_DIR / "images"
 OUTPUT_INDEX = BASE_DIR / "index.html"
+
+# 画像の拡張子
+IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"}
 
 
 # ============================================================
@@ -63,6 +70,40 @@ def format_date(date_value) -> str:
     return str(date_value) if date_value else ""
 
 
+def fix_image_paths_for_article(html: str) -> str:
+    """
+    記事HTML内の画像パスを articles/ からの相対パスに修正する。
+    ../images/xxx.png → ../images/xxx.png（すでに正しい場合はそのまま）
+    images/xxx.png → ../images/xxx.png（postsからの相対パスを修正）
+    """
+    # images/ で始まるパスを ../images/ に変換（articles/ 配下からの参照用）
+    html = re.sub(
+        r'src="images/',
+        'src="../images/',
+        html,
+    )
+    return html
+
+
+def get_thumbnail(meta: dict, slug: str) -> str:
+    """
+    記事のサムネイル画像パスを取得する。
+    フロントマターの thumbnail が指定されていればそれを使い、
+    なければ images/{slug}-thumb.* を探す。見つからなければ空文字。
+    """
+    # フロントマターで明示指定
+    if meta.get("thumbnail"):
+        return meta["thumbnail"]
+
+    # 自動探索: images/{slug}-thumb.png 等
+    for ext in IMAGE_EXTENSIONS:
+        thumb_path = IMAGES_DIR / f"{slug}-thumb{ext}"
+        if thumb_path.exists():
+            return f"images/{slug}-thumb{ext}"
+
+    return ""
+
+
 # ============================================================
 # メイン処理
 # ============================================================
@@ -91,6 +132,7 @@ def load_posts() -> list[dict]:
         body_html = md.convert(body_md)
 
         slug = slug_from_filename(filepath.name)
+        thumbnail = get_thumbnail(meta, slug)
         post = {
             "title": meta.get("title", "無題"),
             "client": meta.get("client", ""),
@@ -101,6 +143,7 @@ def load_posts() -> list[dict]:
             "date": meta.get("date", ""),
             "date_display": format_date(meta.get("date", "")),
             "tags": meta.get("tags", []),
+            "thumbnail": thumbnail,
             "slug": slug,
             "body_html": body_html,
         }
@@ -137,6 +180,9 @@ def build_site():
     # --- 個別記事ページの生成 ---
     print("\n--- 個別記事ページを生成中 ---")
     for post in posts:
+        # 記事本文内の画像パスを articles/ からの相対パスに修正
+        article_body = fix_image_paths_for_article(post["body_html"])
+
         article_content = article_template.render(
             title=post["title"],
             client=post["client"],
@@ -145,7 +191,7 @@ def build_site():
             ai_tools=post["ai_tools"],
             tags=post["tags"],
             date=post["date_display"],
-            body=post["body_html"],
+            body=article_body,
             base_path="../",
         )
 
@@ -172,6 +218,7 @@ def build_site():
             summary=post["summary"],
             date=post["date_display"],
             tags=post["tags"],
+            thumbnail=post["thumbnail"],
         )
         cards_html += card_html + "\n"
 
@@ -192,10 +239,19 @@ def build_site():
     OUTPUT_INDEX.write_text(index_html, encoding="utf-8")
     print(f"  [OK] index.html")
 
+    # --- 画像ファイルの確認 ---
+    image_count = 0
+    if IMAGES_DIR.exists():
+        image_count = sum(
+            1 for f in IMAGES_DIR.iterdir()
+            if f.is_file() and f.suffix.lower() in IMAGE_EXTENSIONS
+        )
+
     print("\n" + "=" * 50)
     print("Build Complete!")
     print(f"  - index.html: 生成済み")
     print(f"  - articles/: {len(posts)} ページ生成済み")
+    print(f"  - images/: {image_count} 画像ファイル")
     print("=" * 50)
 
 

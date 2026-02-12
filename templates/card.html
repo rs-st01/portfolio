@@ -1,4 +1,9 @@
 <a href="articles/{{ slug }}.html" class="card">
+    {% if thumbnail %}
+    <div class="card-thumbnail">
+        <img src="{{ thumbnail }}" alt="{{ title }}" loading="lazy">
+    </div>
+    {% endif %}
     <div class="card-date">{{ date }}</div>
     <h2 class="card-title">{{ title }}</h2>
     <p class="card-client">{{ client }}</p>
