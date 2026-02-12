@@ -1,0 +1,18 @@
+<a href="articles/{{ slug }}.html" class="card">
+    <div class="card-date">{{ date }}</div>
+    <h2 class="card-title">{{ title }}</h2>
+    <p class="card-client">{{ client }}</p>
+    <div class="card-ai-tools">
+        {% for tool in ai_tools %}
+        <span class="ai-tag">{{ tool }}</span>
+        {% endfor %}
+    </div>
+    <p class="card-summary">{{ summary }}</p>
+    {% if tags %}
+    <div class="card-tags">
+        {% for tag in tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</a>

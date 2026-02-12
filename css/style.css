@@ -1,0 +1,327 @@
+/* ==========================================================================
+   AI Portfolio - Style
+   ========================================================================== */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Meiryo", sans-serif;
+    line-height: 1.7;
+    color: #1a1a2e;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: #4361ee;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #3a0ca3;
+}
+
+/* --- Layout --- */
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --- Header --- */
+.site-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    padding: 2rem 0;
+    margin-bottom: 2.5rem;
+}
+
+.site-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.02em;
+}
+
+.site-title:hover {
+    color: #e2e8f0;
+}
+
+.site-description {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* --- Card Grid --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: inherit;
+    border: 1px solid #e2e8f0;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+    color: inherit;
+}
+
+.card-date {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+    color: #1a1a2e;
+}
+
+.card-client {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.card-summary {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+/* --- AI Tool Tags --- */
+.card-ai-tools,
+.article-ai-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.ai-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+}
+
+/* --- Tags --- */
+.card-tags,
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.tag {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+/* --- Article Page --- */
+.article {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.article-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.article-date {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.article-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: #1a1a2e;
+}
+
+.article-client {
+    font-size: 0.95rem;
+    color: #475569;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.article-period {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.25rem;
+}
+
+.article-purpose {
+    font-size: 0.95rem;
+    color: #334155;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.article-ai-tools {
+    margin-bottom: 0.75rem;
+}
+
+/* --- Article Body --- */
+.article-body h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #4361ee;
+}
+
+.article-body p {
+    margin-bottom: 1rem;
+    color: #334155;
+}
+
+.article-body ul,
+.article-body ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.article-body li {
+    margin-bottom: 0.4rem;
+    color: #334155;
+}
+
+.article-body code {
+    background: #f1f5f9;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+}
+
+.article-body pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.article-body pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+/* --- Back Link --- */
+.article-back {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.article-back a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4361ee;
+}
+
+.article-back a:hover {
+    color: #3a0ca3;
+}
+
+/* --- Footer --- */
+.site-footer {
+    margin-top: auto;
+    padding: 1.5rem 0;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* --- Page Title (Index) --- */
+.page-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1a1a2e;
+}
+
+.page-count {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 400;
+    margin-left: 0.5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+    .site-header {
+        padding: 1.5rem 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .site-title {
+        font-size: 1.4rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .article-title {
+        font-size: 1.4rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+}
